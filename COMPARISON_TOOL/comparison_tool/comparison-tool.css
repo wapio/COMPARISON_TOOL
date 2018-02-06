@@ -1,0 +1,68 @@
+body {
+	background-color:  Linen;
+	font-family: "ÉÅÉCÉäÉI", "Meiryo"
+}
+
+#box {
+	display: table;
+}
+
+.textarea {
+	width: 500px;
+	height: 300px;
+	border-radius: 5px;
+	resize: none;
+	font-size: 13px;
+}
+
+#left_box {
+	display: table-cell;
+}
+
+#right_box {
+	display: table-cell;
+	padding-left: 10px;
+}
+
+#compare_btn {
+	width: 100px;
+	height: 30px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#compare_btn:hover {
+	color: white;
+	background-color: orange;
+}
+
+#compare_btn:active {
+	color: white;
+	background-color: silver;
+}
+
+#compared_box {
+	display: table;
+	margin-top: 10px;
+}
+
+#compared_left_box {
+}
+
+#compared_right_box {
+	padding-left: 10px;
+}
+
+.compared_child_box {
+	display: table-cell;
+}
+
+.compared_textarea {
+	width: 503px;
+	height: 100px;
+	background-color: white;
+	border: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	font-size: 13px;
+}

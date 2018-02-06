@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="comparison-tool.css">
+		<title>XML比較ツール</title>
+	</head>
+	<script type="text/javascript">
+		function compare() {
+			
+			let leftText   = document.getElementById("left_box_textarea").value;
+			let rightText = document.getElementById("right_box_textarea").value;
+			
+			// 改行を区切り文字として、配列に変換する。
+			// let leftArray   = leftText.split(/\r\n|\r|\n/);
+			// let rightArray = rightText.split(/\r\n|\r|\n/);
+			
+			let leftXml = parseXML(leftText);
+			
+			alert(leftXml.length);
+			
+			
+			leftText   = escape_tag(leftText);
+			rightText = escape_tag(rightText);
+			
+			set_compared_textare(leftText, rightText);
+		}
+		
+		function parseXML(str) {
+			return new DOMParser().parseFromString(str, 'text/xml');
+		}
+		
+		function escape_tag(str) {
+			return str.replace(/[&'`"<>]/g, function(match) {
+			    return {
+			      '&': '&amp;',
+			      "'": '&#x27;',
+			      '`': '&#x60;',
+			      '"': '&quot;',
+			      '<': '&lt;',
+			      '>': '&gt;',
+			    }[match]
+			  });
+		}
+		
+		function set_compared_textare(leftText, rightText) {
+			document.getElementById("compared_left_textarea").innerHTML = leftText;
+			document.getElementById("compared_right_textarea").innerHTML = rightText;
+		}
+	</script>
+	<body>
+		<div id="headline"><h1>XML比較ツール</h1></div>
+		<div id="container">
+			<div id="box">
+				<div id="left_box"><textarea id="left_box_textarea" class="textarea"></textarea></div>
+				<div id="right_box"><textarea id="right_box_textarea"  class="textarea"></textarea></div>
+			</div>
+			<div><button id="compare_btn" onclick="compare();">比較実行！</button></div>
+			<div id="compared_box">
+				<div id="compared_left_box" class="compared_child_box"><div id="compared_left_textarea" class="compared_textarea"></div></div>
+				<div id="compared_right_box" class="compared_child_box"><div id="compared_right_textarea" class="compared_textarea"></div></div>
+			</div>
+		</div>
+	</body>
+</html>
